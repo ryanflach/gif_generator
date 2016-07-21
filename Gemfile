@@ -31,6 +31,7 @@ gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
 gem 'twitter-bootstrap-rails'
+gem 'bcrypt'
 
 gem 'rails_12factor', group: :production
 
