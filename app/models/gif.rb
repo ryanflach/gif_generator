@@ -3,4 +3,6 @@ class Gif < ActiveRecord::Base
 
   has_many :favorite_gifs
   has_many :users, through: :favorite_gifs
+
+  validates :image_path, presence: true, uniqueness: {scope: :category_id}
 end
