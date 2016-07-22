@@ -12,16 +12,10 @@ FactoryGirl.define do
     username
     email
     password 'password'
-    role 0
 
     factory :admin do
       role 1
     end
-
-    # Throws an error that 'Favorite gifs' is invalid
-    # factory :user_with_favorites do
-    #   favorites { create_list(:gif, 2) }
-    # end
   end
 
   sequence :name do |n|

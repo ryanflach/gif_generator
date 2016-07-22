@@ -35,8 +35,6 @@ RSpec.feature "Guest can create a new user account" do
       fill_in "Password", with: 'password'
       click_button "Create User"
 
-      # Throws error that the path is /users, not /users/new
-      # expect(current_path).to eq(new_user_path)
       expect(page).to have_content("Username has already been taken")
     end
   end
