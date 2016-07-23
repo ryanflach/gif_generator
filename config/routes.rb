@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :gifs, only: [:index, :show]
 
   resources :users, except: [:index] do
-    resources :gifs, only: [:index]
+    resources :gifs, only: [:create]
   end
 
   namespace :admin do

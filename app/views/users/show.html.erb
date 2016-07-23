@@ -1,4 +1,4 @@
-<h1><%= @user.username %></h1>
+<h1 class="col-md-12"><%= @user.username %></h1>
 <p>
   E-mail: <%= @user.email %>
 </p>
@@ -8,3 +8,11 @@
 <p>
   <%= link_to "Delete Profile", @user, method: :delete %>
 </p>
+<% @user.favorites.each_with_index do |gif, index| %>
+  <%= content_tag :div, class: 'col-md-12' do %>
+    <h2><%= gif.category.name %></h2>
+  <% end %>
+  <%= content_tag :div, class: "col-md-4" do %>
+    <%= image_tag gif.image_path, class: "#{gif.category.name}-image-#{index + 1}" %>
+  <% end %>
+<% end %>

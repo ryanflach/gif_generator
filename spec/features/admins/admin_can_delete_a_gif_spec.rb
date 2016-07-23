@@ -11,7 +11,6 @@ RSpec.feature "Admin can delete a gif" do
     page.find(".#{gif.category.name}-image-1").click_on "Delete GIF"
 
     expect(current_path).to eq(admin_categories_path)
-    save_and_open_page
     expect(page).not_to have_link(gif.category.name, href: admin_category_path(gif.category))
   end
 end
