@@ -28,6 +28,17 @@ RSpec.feature "User can edit their account" do
   end
 
   context "they supply invalid information" do
+    scenario "logged-in user visits page to edit their profile" do
+      login_user
+      other_user = create(:user)
+      
+      visit edit_user_path(User.first)
+      fill_in "Username", with: other_user.username
+      click_button "Update User"
 
+      expect(page).to have_content("Username has already been taken")
+      expect(page).to have_content("Welcome, #{User.first.username}!")
+      expect(page).not_to have_content("Welcome, #{other_user.username}!")
+    end
   end
 end
