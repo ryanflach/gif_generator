@@ -9,10 +9,10 @@
 <body>
 
   <%= render partial: "shared/navbar" %>
-  <% flash.each do |type, msg| %>
-    <%= content_tag :div, msg, class: "flash-#{type}" %>
-  <% end %>
   <div class="container">
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, msg, class: "flash-#{type}" %>
+    <% end %>
     <%= yield %>
   </div>
 

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :gifs, only: [:index]
   end
 
+  namespace :admin do
+    resources :categories, except: [:edit, :update]
+  end
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
