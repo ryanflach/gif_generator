@@ -12,7 +12,9 @@
   <% flash.each do |type, msg| %>
     <%= content_tag :div, msg, class: "flash-#{type}" %>
   <% end %>
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

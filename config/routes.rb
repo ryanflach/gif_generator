@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :gifs
 
-  resources :users, only: [:new, :create]
+  resources :users, except: [:index] do
+    resources :gifs, only: [:index]
+  end
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

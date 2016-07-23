@@ -1,14 +1,5 @@
 require 'rails_helper'
 
-def login_user
-  User.create(username: 'Ryan', email: 'ryan@example.com', password: 'password')
-
-  visit login_path
-  fill_in "Username", with: "Ryan"
-  fill_in "Password", with: "password"
-  click_button "Login"
-end
-
 RSpec.feature "User can log out" do
   scenario "logged-in user visits the gifs page" do
     login_user
@@ -23,4 +14,13 @@ RSpec.feature "User can log out" do
     expect(page).to have_link("Login", href: login_path)
     expect(page).to have_link("Create Account", href: new_user_path)
   end
+end
+
+def login_user
+  User.create(username: 'Ryan', email: 'ryan@example.com', password: 'password')
+
+  visit login_path
+  fill_in "Username", with: "Ryan"
+  fill_in "Password", with: "password"
+  click_button "Login"
 end

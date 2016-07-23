@@ -14,7 +14,7 @@ RSpec.feature "User can log in" do
 
       expect(current_path).to eq(root_path)
       expect(page).to have_content("Welcome, #{user.username}!")
-      expect(page).to have_link("Logout", logout_path)
+      expect(page).to have_link("Logout", href: logout_path)
     end
 
     scenario "an unregistered user visits the root path" do
@@ -25,8 +25,7 @@ RSpec.feature "User can log in" do
       fill_in "Password", with: 'password'
       click_button "Login"
 
-      expect(current_path).to eq(new_user_path)
-      expect(page).to have_content("Username 'Ryan' not found. Please register below.")
+      expect(page).to have_content("Username or password incorrect")
       expect(page).not_to have_content("Welcome, Ryan!")
     end
   end
