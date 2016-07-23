@@ -32,6 +32,7 @@ gem 'unicorn'
 
 gem 'twitter-bootstrap-rails'
 gem 'bcrypt'
+gem 'faraday'
 
 gem 'rails_12factor', group: :production
 

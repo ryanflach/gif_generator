@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'gifs#index'
 
-  resources :gifs
+  resources :gifs, only: [:index, :show]
 
   resources :users, except: [:index] do
     resources :gifs, only: [:index]
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :categories, except: [:edit, :update]
+    resources :gifs, only: [:new, :create, :destroy]
   end
 
   get '/login', to: 'sessions#new'

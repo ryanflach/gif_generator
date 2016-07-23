@@ -22,6 +22,13 @@ class Admin::CategoriesController < Admin::BaseController
     @category = Category.find(params[:id])
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    flash[:success] = "Category '#{@category.name}' and its GIFs successfully deleted"
+    redirect_to admin_categories_path
+  end
+
   private
 
   def category_params
