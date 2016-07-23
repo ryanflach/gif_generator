@@ -34,6 +34,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    session.clear
+    flash[:success] = "Profile deleted successfully"
+    redirect_to root_path
+  end
+
   private
 
   def user_params
