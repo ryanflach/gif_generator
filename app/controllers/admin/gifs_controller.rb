@@ -17,7 +17,12 @@ class Admin::GifsController < Admin::BaseController
   def destroy
     @gif = Gif.find(params[:id])
     @gif.destroy
-    flash[:success] = "Gif removed from '#{@gif.category.name}'"
+    if @gif.category.gifs.count == 0
+      @gif.category.destroy
+      flash[:success] = "Gif removed from '#{@gif.category.name}'; empty category deleted"
+    else
+      flash[:success] = "Gif removed from '#{@gif.category.name}'"
+    end
     redirect_to admin_categories_path
   end
 

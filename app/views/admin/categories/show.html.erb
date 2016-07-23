@@ -1,6 +1,9 @@
 <h1><%= @category.name %></h1>
-<% @category.gifs.each do |gif| %>
-  <%= image_tag(gif.image_path) %>
+<% @category.gifs.each_with_index do |gif, index| %>
+  <%= content_tag :div, class: "#{@category.name}-image-#{index + 1}" do %>
+    <%= image_tag(gif.image_path) %><br />
+    <%= link_to "Delete GIF", admin_gif_path(gif), method: :delete %>
+  <% end %>
 <% end %>
 <p>
   <%= link_to "Delete Category", admin_category_path(@category), method: :delete %>

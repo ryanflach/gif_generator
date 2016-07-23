@@ -21,12 +21,8 @@ FactoryGirl.define do
   end
 
   sequence :name do |n|
-    "Category #{n}"
+    "Category_#{n}"
   end
-
-  # sequence :image_path do |n|
-  #   "http://www.example.com/images/#{n}.jpg"
-  # end
 
   sequence :username do |n|
     "Johnny #{n}"
