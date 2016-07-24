@@ -11,7 +11,8 @@ RSpec.feature "User can view their favorited gifs by category" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit user_path(user)
-    expect(page).to have_css(".#{Gif.first.category.name}-image-1")
-    expect(page).to have_css(".#{Gif.last.category.name}-image-2")
+    expect(page).to have_css(".#{Category.first.name}-image-1")
+    expect(page).to have_css(".#{Category.first.name}-image-2")
+    expect(page).to have_css(".#{Category.last.name}-image-1")
   end
 end
