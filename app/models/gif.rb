@@ -5,4 +5,8 @@ class Gif < ActiveRecord::Base
   has_many :users, through: :favorite_gifs
 
   validates :image_path, presence: true, uniqueness: {scope: :category_id}
+
+  def self.grouped_by_category
+    joins(:category).group(['categories.name', 'gifs.id'])
+  end
 end
