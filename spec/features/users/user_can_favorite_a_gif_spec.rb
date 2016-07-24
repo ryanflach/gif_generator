@@ -8,7 +8,7 @@ RSpec.feature "User can favorite a gif" do
 
     visit root_path
     page.find(".#{gif.category.name}-image-1").click
-
+    
     expect(current_path).to eq(user_path(user))
     expect(page).to have_content("Added GIF to favorites")
     expect(page).to have_content(gif.category.name)
