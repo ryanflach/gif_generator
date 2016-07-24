@@ -5,4 +5,5 @@
     <%= link_to "Delete GIF", admin_gif_path(gif), method: :delete%>
   <% end %>
 <% end %>
-<%= link_to "Delete Category", admin_category_path(@category), method: :delete, class: "col-md-12" %>
+<%= link_to "Add GIF", admin_gifs_path(gif: {category: @category.name}), method: :post, class: "col-md-10 text-right" %>
+<%= link_to "Delete Category", admin_category_path(@category), method: :delete, class: "col-md-2 text-right" %>

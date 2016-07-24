@@ -1,6 +1,3 @@
-require 'faraday'
-require 'json'
-
 module GifHelper
   def fetch_data(category)
     Faraday.get("http://api.giphy.com/v1/gifs/search?q=#{category}&limit=20&api_key=dc6zaTOxFJmzC")
