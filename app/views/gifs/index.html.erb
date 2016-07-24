@@ -5,15 +5,25 @@
       Click on any GIF to mark it as a favorite
     </p>
   <% end %>
-  <% @gifs.each_with_index do |gif, index| %>
-    <%= content_tag :div, class: "col-md-4 text-center" do %>
-      <%= link_to image_tag(gif.image_path), user_gifs_path(current_user, id: gif.id), method: :post, class: "#{gif.category.name}-image-#{index + 1}" %>
+  <% @gifs.grouped_by_category.each do |category, gifs| %>
+    <%= content_tag :div, class: "row col-md-12" do %>
+      <h2><%= category %></h2>
+    <% end %>
+    <% gifs.each_with_index do |gif, index| %>
+      <%= content_tag :div, class: 'col-md-4 text-center' do %>
+        <%= link_to image_tag(gif.image_path), user_gifs_path(current_user, id: gif.id), method: :post, class: "#{gif.category.name}-image-#{index + 1}" %><br />
+      <% end %>
     <% end %>
   <% end %>
 <% else %>
-  <% @gifs.each_with_index do |gif, index| %>
-    <%= content_tag :div, class: "col-md-4 text-center" do %>
-      <%= image_tag(gif.image_path) %>
+  <% @gifs.grouped_by_category.each do |category, gifs| %>
+    <%= content_tag :div, class: "row col-md-12" do %>
+      <h2><%= category %></h2>
+    <% end %>
+    <% gifs.each_with_index do |gif, index| %>
+      <%= content_tag :div, class: 'col-md-4 text-center' do %>
+        <%= image_tag gif.image_path, class: "#{gif.category.name}-image-#{index + 1}" %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
