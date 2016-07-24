@@ -11,7 +11,7 @@
     <% end %>
     <% gifs.each_with_index do |gif, index| %>
       <%= content_tag :div, class: 'col-md-4 text-center' do %>
-        <%= link_to image_tag(gif.image_path), user_gifs_path(current_user, id: gif.id), method: :post, class: "#{gif.category.name}-image-#{index + 1}" %><br />
+        <%= link_to image_tag(gif.image_path), user_gifs_path(@user, id: gif.id), method: :post, class: "#{gif.category.name}-image-#{index + 1}" %><br />
       <% end %>
     <% end %>
   <% end %>

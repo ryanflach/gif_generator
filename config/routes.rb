@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'gifs#index'
 
-  resources :gifs, only: [:index, :show]
+  resources :gifs, only: [:index]
 
   resources :users, except: [:index] do
     resources :gifs, only: [:create, :destroy]
