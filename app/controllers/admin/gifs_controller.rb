@@ -9,10 +9,10 @@ class Admin::GifsController < Admin::BaseController
       flash[:success] = "Gif added to '#{@gif.category.name}'"
       redirect_to admin_category_path(@gif.category)
     elsif clean_gif_params.nil?
-      flash.now[:error] = "Please supply a category name or select from the existing"
+      flash.now[:danger] = "Please supply a category name or select from the existing"
       render :new
     else
-      flash.now[:error] = @gif.errors.full_messages.join(', ')
+      flash.now[:danger] = @gif.errors.full_messages.join(', ')
       render :new
     end
   end

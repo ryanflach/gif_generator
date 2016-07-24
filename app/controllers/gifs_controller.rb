@@ -13,7 +13,7 @@ class GifsController < ApplicationController
       flash[:success] = "Added GIF to favorites"
       redirect_to @user
     else
-      flash.now[:error] = "GIF is already favorited"
+      flash.now[:danger] = "GIF is already favorited"
     end
   end
 

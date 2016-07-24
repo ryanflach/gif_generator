@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to gifs_path
     else
-      flash.now[:error] = @user.errors.full_messages.join(', ')
+      flash.now[:danger] = @user.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated successfully"
       redirect_to @user
     else
-      flash.now[:error] = @user.errors.full_messages.join(', ')
+      flash.now[:danger] = @user.errors.full_messages.join(', ')
       render :edit
     end
   end
