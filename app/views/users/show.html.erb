@@ -8,13 +8,15 @@
 <p>
   <%= link_to "Delete Profile", @user, method: :delete %>
 </p>
-<% @user.favorites.grouped_by_category.each do |category, gifs| %>
-  <%= content_tag :div, class: "row col-md-12" do %>
-    <h2><%= category %></h2>
-  <% end %>
-  <% gifs.each_with_index do |gif, index| %>
-    <%= content_tag :div, class: 'col-md-4' do %>
-      <%= image_tag gif.image_path, class: "#{gif.category.name}-image-#{index + 1}" %>
+<!-- <% if @user.favorites.count > 0 %> -->
+  <% @user.favorites.grouped_by_category.each do |category, gifs| %>
+    <%= content_tag :div, class: "row col-md-12" do %>
+      <h2><%= category %></h2>
+    <% end %>
+    <% gifs.each_with_index do |gif, index| %>
+      <%= content_tag :div, class: 'col-md-4' do %>
+        <%= image_tag gif.image_path, class: "#{gif.category.name}-image-#{index + 1}" %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+<!-- <% end %> -->

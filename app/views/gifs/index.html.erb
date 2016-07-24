@@ -1,12 +1,18 @@
 <h1 class="col-md-12">All GIFs</h1>
-<% @gifs.each_with_index do |gif, index| %>
-  <%= content_tag :div, class: "col-md-4 text-center" do %>
-    <% if current_user && !current_admin? %>
-      <%= content_tag :div, class: "col-md-12 text-center" do %>
-         <h1>Click on any GIF to mark as a favorite</h1>
-      <% end %>
+<% if current_user && !current_admin? %>
+  <%= content_tag :div, class: "col-md-12 text-center" do %>
+    <p class="lead">
+      Click on any GIF to mark it as a favorite
+    </p>
+  <% end %>
+  <% @gifs.each_with_index do |gif, index| %>
+    <%= content_tag :div, class: "col-md-4 text-center" do %>
       <%= link_to image_tag(gif.image_path), user_gifs_path(current_user, id: gif.id), method: :post, class: "#{gif.category.name}-image-#{index + 1}" %>
-    <% else %>
+    <% end %>
+  <% end %>
+<% else %>
+  <% @gifs.each_with_index do |gif, index| %>
+    <%= content_tag :div, class: "col-md-4 text-center" do %>
       <%= image_tag(gif.image_path) %>
     <% end %>
   <% end %>

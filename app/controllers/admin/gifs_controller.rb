@@ -8,8 +8,11 @@ class Admin::GifsController < Admin::BaseController
     if @gif.save
       flash[:success] = "Gif added to '#{@gif.category.name}'"
       redirect_to admin_category_path(@gif.category)
+    elsif clean_gif_params.nil?
+      flash.now[:error] = "Please supply a category name or select from the existing"
+      render :new
     else
-      flash[:error] = @gif.errors.full_messages.join(', ')
+      flash.now[:error] = @gif.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -33,7 +36,9 @@ class Admin::GifsController < Admin::BaseController
   end
 
   def clean_gif_params
-    if gif_params[:category].empty?
+    if gif_params[:category].empty? && gif_params[:category_id].empty?
+      nil
+    elsif gif_params[:category].empty?
       {image_path: image_url(Category.find(gif_params[:category_id]).name), category_id: gif_params[:category_id]}
     else
       {image_path: image_url(gif_params[:category]), category: Category.find_or_create_by(name: gif_params[:category])}
