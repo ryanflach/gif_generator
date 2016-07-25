@@ -1,6 +1,6 @@
 module GifHelper
   def fetch_data(category)
-    Faraday.get("http://api.giphy.com/v1/gifs/search?q=#{category}&limit=20&api_key=dc6zaTOxFJmzC")
+    Faraday.get("http://api.giphy.com/v1/gifs/search?q=#{category}&limit=20&api_key=#{ENV["giphy_key"]}")
   end
 
   def parse_data(category)
