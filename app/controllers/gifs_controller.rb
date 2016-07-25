@@ -9,11 +9,13 @@ class GifsController < ApplicationController
   def create
     @user = current_user
     gif = Gif.find(params[:id])
-    if @user.favorites << gif
+    if FavoriteGif.find_by(user: @user, gif: gif)
+      flash[:danger] = "GIF is already favorited"
+      redirect_to root_path
+    else
+      @user.favorites << gif
       flash[:success] = "Added GIF to favorites"
       redirect_to @user
-    else
-      flash.now[:danger] = "GIF is already favorited"
     end
   end
 
