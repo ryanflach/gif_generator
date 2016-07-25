@@ -34,6 +34,7 @@ gem 'twitter-bootstrap-rails'
 gem 'bcrypt'
 gem 'faraday'
 gem 'figaro'
+gem 'simplecov', :require => false, :group => :test
 
 gem 'rails_12factor', group: :production
 
