@@ -21,7 +21,7 @@
       <h2><%= category %></h2>
     <% end %>
     <% gifs.each_with_index do |gif, index| %>
-      <%= content_tag :div, class: 'col-md-4 text-center' do %>
+      <%= content_tag :div, class: "col-md-4 text-center" do %>
         <%= image_tag gif.image_path, class: "#{gif.category.name}-image-#{index + 1} img-responsive img-rounded" %>
       <% end %>
     <% end %>

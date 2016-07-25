@@ -2,8 +2,11 @@
 <% @category.gifs.each_with_index do |gif, index| %>
   <%= content_tag :div, class: "#{@category.name}-image-#{index + 1} col-md-4 text-center" do %>
     <%= image_tag(gif.image_path, class: "img-responsive img-rounded") %><br />
-    <%= link_to "Delete GIF", admin_gif_path(gif), method: :delete%>
+    <%= link_to "Delete GIF", admin_gif_path(gif), method: :delete %>
   <% end %>
 <% end %>
-<%= link_to "Add GIF", admin_gifs_path(gif: {category: @category.name}), method: :post, class: "col-md-10 text-right" %>
-<%= link_to "Delete Category", admin_category_path(@category), method: :delete, class: "col-md-2 text-right" %>
+<div class="row col-md-12">
+  <br />
+  <%= link_to "Add GIF", admin_gifs_path(gif: {category: @category.name}), method: :post, class: "col-md-offset-7 col-md-2 btn btn-default text-right" %>
+  <%= link_to "Delete Category", admin_category_path(@category), method: :delete, class: "col-md-offset-1 col-md-2 btn btn-danger text-right" %>
+</div>
